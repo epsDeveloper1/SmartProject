@@ -71,12 +71,6 @@ void USAR_UART_IDLECallback(UART_HandleTypeDef *huart);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-void delay (uint16_t time)
-{
-	__HAL_TIM_SET_COUNTER(&htim1, 0);
-	while (__HAL_TIM_GET_COUNTER (&htim1) < time);
-}
-
 uint32_t IC_Val1 = 0;
 uint32_t IC_Val2 = 0;
 uint32_t Difference = 0;
@@ -126,7 +120,6 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 void HCSR04_Read (void)
 {
 	HAL_GPIO_WritePin(TRIG_PORT, TRIG_PIN, GPIO_PIN_SET);  // pull the TRIG pin HIGH
-	//delay(10);  // wait for 10 us
 	HAL_Delay(1);
 	HAL_GPIO_WritePin(TRIG_PORT, TRIG_PIN, GPIO_PIN_RESET);  // pull the TRIG pin low
 
@@ -191,14 +184,6 @@ int main(void)
 		  tx_dis_buff[9] = Distance + 0x30;
 		  HAL_UART_Transmit_DMA(&huart1, (uint8_t*)tx_dis_buff, 10);
 	  }
-
-//	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_4);  // pull the TRIG pin HIGH
-//	delay(100);  // wait for 10 us
-	//delay(10);  // wait for 10 us
-//	delay(10);  // wait for 10 us
-//	HAL_Delay(1);
-	//HAL_GPIO_TogglePin(TRIG_PORT, TRIG_PIN);  // pull the TRIG pin HIGH
-	//delay(30);  // wait for 10 us
   }
   /* USER CODE END 3 */
 }
