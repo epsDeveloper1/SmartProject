@@ -1,4 +1,4 @@
-# SmartProject HCSR04
+# SmartProject HC-SR04
 A repository for smart project development
 
 This project is to test sensor SC-HR04 with STM32L452RE Controller, using HAL library Input Capture function.
